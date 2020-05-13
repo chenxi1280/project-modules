@@ -379,4 +379,10 @@
       commission_type = #{commissionType,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
+
+
+  <!-- 自己写的sql 语句-->
+  <select id="selectByUserQuery" resultType="com.qf.pojo.vo.FcOrderVO">
+
+  </select>
 </mapper>

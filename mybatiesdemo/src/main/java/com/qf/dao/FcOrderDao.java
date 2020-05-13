@@ -1,6 +1,10 @@
 package com.qf.dao;
 
 import com.qf.pojo.entity.FcOrder;
+import com.qf.pojo.query.UserQuery;
+import com.qf.pojo.vo.FcOrderVO;
+
+import java.util.List;
 
 public interface FcOrderDao {
     int deleteByPrimaryKey(Long orderId);
@@ -14,4 +18,6 @@ public interface FcOrderDao {
     int updateByPrimaryKeySelective(FcOrder record);
 
     int updateByPrimaryKey(FcOrder record);
+
+    List<FcOrderVO> selectByUserQuery(UserQuery userQuery);
 }
