@@ -131,4 +131,17 @@
       user_id = #{userId,jdbcType=BIGINT}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByOrders" resultType="com.qf.pojo.vo.OrderItemVO">
+
+    select <include refid="Base_Column_List" />
+    from order_item
+    where order_id in
+    <foreach collection="oids" item="o" open="(" close=")" separator=",">
+      #{o.orderId}
+    </foreach>
+
+
+  </select>
+
 </mapper>

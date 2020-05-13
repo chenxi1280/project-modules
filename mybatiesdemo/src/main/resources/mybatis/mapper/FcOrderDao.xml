@@ -383,6 +383,18 @@
 
   <!-- 自己写的sql 语句-->
   <select id="selectByUserQuery" resultType="com.qf.pojo.vo.FcOrderVO">
-
+    select <include refid="Base_Column_List" />
+    from fc_order
+    <where>
+      <if test="userId != null ">
+        and user_id #{userId}
+      </if>
+      <if test="minTime != null">
+        and create_time &gt;= #{minTime}
+      </if>
+      <if test="maxTime != null">
+        and create_time &lt; #{maxTime}
+      </if>
+    </where>
   </select>
 </mapper>
