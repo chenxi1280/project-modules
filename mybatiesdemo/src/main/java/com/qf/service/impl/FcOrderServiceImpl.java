@@ -2,6 +2,7 @@ package com.qf.service.impl;
 
 import com.qf.dao.FcOrderDao;
 import com.qf.dao.OrderItemDao;
+import com.qf.pojo.dto.ReulstData;
 import com.qf.pojo.entity.FcOrder;
 import com.qf.pojo.entity.OrderItem;
 import com.qf.pojo.query.UserQuery;
@@ -20,7 +21,7 @@ public class FcOrderServiceImpl implements FcOrderService {
     private FcOrderDao fcOrderDao;
     private OrderItemDao orderItemDao;
 
-    public List<FcOrderVO> selectByUserQuery(UserQuery userQuery) {
+    public ReulstData selectByUserQuery(UserQuery userQuery) {
 
         List<FcOrderVO> list = fcOrderDao.selectByUserQuery(userQuery);
         if (list != null && list.size() >0) {
@@ -33,7 +34,6 @@ public class FcOrderServiceImpl implements FcOrderService {
         Map<String, Collection> map = new HashMap<>();
         map.put("data",list);
 
-
-        return null;
+        return ReulstData.ok(map);
     }
 }

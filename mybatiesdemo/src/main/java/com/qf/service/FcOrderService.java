@@ -1,5 +1,6 @@
 package com.qf.service;
 
+import com.qf.pojo.dto.ReulstData;
 import com.qf.pojo.query.UserQuery;
 import com.qf.pojo.vo.FcOrderVO;
 
@@ -9,5 +10,5 @@ public interface FcOrderService {
 
 
 
-    List<FcOrderVO> selectByUserQuery(UserQuery userQuery);
+    ReulstData selectByUserQuery(UserQuery userQuery);
 }
