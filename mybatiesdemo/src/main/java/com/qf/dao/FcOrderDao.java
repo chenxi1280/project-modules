@@ -1,6 +1,7 @@
 package com.qf.dao;
 
 import com.qf.pojo.entity.FcOrder;
+import com.qf.pojo.query.FcOrderQuery;
 import com.qf.pojo.query.UserQuery;
 import com.qf.pojo.vo.FcOrderVO;
 
@@ -20,4 +21,8 @@ public interface FcOrderDao {
     int updateByPrimaryKey(FcOrder record);
 
     List<FcOrderVO> selectByUserQuery(UserQuery userQuery);
+
+    int updataByOrderQuery(FcOrderQuery fcOrderQuery);
+
+    List<FcOrderVO> selectByTitile(UserQuery userQuery);
 }

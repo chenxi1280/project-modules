@@ -17,5 +17,8 @@ public class UserQuery {
 
     private Date maxTime;
 
+    private String likeText;
+
+
 
 }

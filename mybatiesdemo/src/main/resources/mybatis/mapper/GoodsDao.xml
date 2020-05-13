@@ -155,4 +155,17 @@
       img = #{img,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
+
+
+  <select id="selectByMerchantId" resultType="com.qf.pojo.vo.GoodsVO">
+    select <include refid="Base_Column_List" />
+    from goods
+    where merchant_id in
+    <foreach collection="ids" separator="," close=")" open="(" item="i">
+      #{i.merchantId}
+    </foreach>
+
+
+  </select>
+
 </mapper>

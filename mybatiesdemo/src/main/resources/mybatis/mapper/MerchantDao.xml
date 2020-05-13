@@ -95,4 +95,19 @@
       logo = #{logo,jdbcType=VARCHAR}
     where merchant_id = #{merchantId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByName" resultType="com.qf.pojo.vo.MerchantVO">
+    select <include refid="Base_Column_List" /> from merchant
+    where shop_name like connect('%',#{likeName},'%')
+
+
+  </select>
+  <select id="selectByTitle" resultType="com.qf.pojo.vo.MerchantVO">
+    select <include refid="Base_Column_List" />
+    from merchant
+    where shop_name like connect('%',#{likeName},'%')
+    or merchant_id  in
+    (select merchant_id from goods where title like   connect('%',#{likeName},'%')  )
+  </select>
+
 </mapper>

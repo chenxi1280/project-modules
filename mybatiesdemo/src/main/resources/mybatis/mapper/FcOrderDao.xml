@@ -397,4 +397,20 @@
       </if>
     </where>
   </select>
+
+  <update id="updataByOrderQuery">
+    update  fc_order
+    set pay_status = '待发货'
+    where order_id = #{orderId} and pay_status = #{payStatus}
+  </update>
+
+  <select id="selectByTitile" resultType="com.qf.pojo.vo.FcOrderVO">
+    select <include refid="Base_Column_List"/>
+    from fc_order
+    where user_id = #{userID}
+    and  order_id in (select  order_id  from order_item where goods_title like connect('%',#{likeText},'%') )
+
+  </select>
+
+
 </mapper>

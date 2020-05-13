@@ -1,6 +1,7 @@
 package com.qf.dao;
 
 import com.qf.pojo.entity.OrderItem;
+import com.qf.pojo.query.FcOrderQuery;
 import com.qf.pojo.vo.FcOrderVO;
 import com.qf.pojo.vo.OrderItemVO;
 import org.apache.ibatis.annotations.Param;
@@ -22,4 +23,6 @@ public interface OrderItemDao {
     int updateByPrimaryKey(OrderItem record);
 
     List<OrderItemVO> selectByOrders(@Param("oids") Collection list);
+
+    int updataByOrderQuery(FcOrderQuery fcOrderQuery);
 }
