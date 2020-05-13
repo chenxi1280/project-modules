@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 加载properties文件
+        先加载property子标签的内容，后加载properties文件
+            如果名称相同，后边覆盖前边内容
+    -->
+    <!--    <properties resource="jdbc.properties">-->
+    <!--        <property name="jdbc.password" value="12345"/>-->
+    <!--    </properties>-->
+
+    <settings>
+        <!--    数据库下划线转换成小驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!-- 定义别名：实际上没有意义 -->
+    <typeAliases>
+        <!-- 给单个的类起别名
+        <typeAlias type="com.qf.domain.User" alias="user"/>
+        -->
+
+        <!-- 给指定包下的类起别名
+            别名的定义规则：类名首字母小写
+        -->
+        <!--        <package name="com.qf.domain"/>-->
+    </typeAliases>
+    <!--    这里需要配置一个数据库表中的下划线转驼峰-->
+
+    <!-- 配置mybatis的环境信息 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置JDBC事务控制，由mybatis进行管理 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据源，采用mybatis连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://10.40.156.251:3306/demo_db?serverTimezne=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载映射文件 -->
+    <mappers>
+        <!-- 使用资源的路径 -->
+        <!--        <mapper resource="User.xml"/>-->
+
+<!--        MerchantDao.xml-->
+<!--        OrderItemDao.xml-->
+<!--        UserDao.xml-->
+        <mapper resource="mybatis/mapper/FcOrderDao.xml"/>
+        <mapper resource="mybatis/mapper/GoodsDao.xml"/>
+        <mapper resource="mybatis/mapper/MerchantDao.xml"/>
+        <mapper resource="mybatis/mapper/OrderItemDao.xml"/>
+        <mapper resource="mybatis/mapper/UserDao.xml"/>
+        <!--
+            使用资源的绝对路径
+         <mapper url=""/> -->
+        <!--
+            Mapper接口的全类名
+            要求：Mapper接口的名称与映射文件名称一致
+                必须在同一个目录下
+        <mapper class="com.qf.mapper.UserMapper"/>
+        -->
+        <!-- 加载某个包下的映射文件 （推荐）
+            要求：Mapper接口的名称与映射文件名称一致
+                必须在同一个目录下
+        -->
+        <!--  这里配置的mapper的路径，而不是dao的路径-->
+        <!--        <package name="com.qianfeng.dao"/>-->
+    </mappers>
+</configuration>
